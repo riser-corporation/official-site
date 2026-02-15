@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="AvtlAwL4SOZxaUKXMSWnyQXofenoeWh0Me2SppU8PEs" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riser Corporation | Official Site</title>
+<meta name="description" content="Riser Corporation is a forward-thinking startup dedicated to the seamless integration of fitness, technology, and human-centric innovation.">
+<meta name="author" content="Riser Team">
+
+<link rel="icon" type="image/png" href="images/favicon.png" onerror="this.href='logo.png'">
+<link rel="shortcut icon" href="images/favicon.png" type="image/png" onerror="this.href='logo.png'">
+<link rel="apple-touch-icon" href="images/favicon.png" onerror="this.href='logo.png'">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg-color: #000000;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --accent-color: #0070f3; /* Electric Blue */
+        --card-bg: #0a0a0a;
+        --border-color: #1a1a1a;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* SMOOTH SCROLL BEHAVIOR */
+    html {
+        scroll-behavior: smooth;
+        /* For better rendering during scroll */
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* VISITOR COUNTER STYLES */
+    .live-counter-section {
+        padding: 2rem 10%;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+        background: #050505;
+    }
+    .counter-box {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+    .counter-number {
+        color: var(--text-primary);
+        font-weight: 700;
+        font-family: monospace;
+        letter-spacing: 2px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* Scrollbar styling for a cleaner look */
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #000;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #222;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-color);
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* --- CINEMATIC INTRO STYLES --- */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+
+    .intro-content {
+        text-align: center;
+    }
+
+    .intro-logo-anim {
+        width: 120px;
+        filter: brightness(0) invert(1);
+        opacity: 0;
+        transform: scale(0.8);
+        filter: blur(20px);
+        animation: cinematicReveal 2.2s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+    }
+
+    .intro-line {
+        height: 1px;
+        width: 0;
+        background: var(--accent-color);
+        margin: 20px auto;
+        animation: lineGrow 1.5s ease 0.5s forwards;
+    }
+
+    .intro-text-anim {
+        color: white;
+        letter-spacing: 12px;
+        font-size: 0.8rem;
+        font-weight: 300;
+        opacity: 0;
+        margin-left: 12px;
+        animation: textFade 1s ease 1.2s forwards;
+    }
+
+    @keyframes cinematicReveal {
+        0% { opacity: 0; transform: scale(0.8); filter: blur(20px); }
+        50% { opacity: 1; transform: scale(1.05); filter: blur(5px); }
+        100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+    }
+
+    @keyframes lineGrow {
+        to { width: 150px; }
+    }
+
+    @keyframes textFade {
+        to { opacity: 0.8; letter-spacing: 15px; }
+    }
+
+    .preloader-hidden {
+        transform: translateY(-100%);
+    }
+
+    /* 3️⃣ MOBILE & RESPONSIVE NAV */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 8%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(12px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .nav-logo {
+        height: 32px;
+        width: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin-left: 2rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .active-users {
+        margin-left: 2rem;
+        font-size: 0.75rem;
+        color: #4CAF50;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .active-users::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #4CAF50;
+        border-radius: 50%;
+        display: inline-block;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    /* HERO SECTION */
+    header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 10%;
+        background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+    }
+
+    .hero-logo {
+        width: 80px;
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+    }
+
+    .hero-subtext {
+        color: var(--text-secondary);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        max-width: 650px;
+        margin-bottom: 3rem;
+        font-weight: 300;
+    }
+
+    /* 2️⃣ CTA BUTTONS */
+    .cta-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: var(--transition);
+    }
+
+    .btn-primary {
+        background-color: var(--text-primary);
+        color: var(--bg-color);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--text-primary);
+    }
+
+    /* SECTIONS */
+    section {
+        padding: 120px 10%;
+        border-top: 1px solid var(--border-color);
+        /* Adding offset for smooth scroll to land perfectly below nav */
+        scroll-margin-top: 80px;
+    }
+
+    .section-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        letter-spacing: -0.02em;
+    }
+
+    .content-text {
+        max-width: 750px;
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+    }
+
+    /* GRID SYSTEM */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+    }
+
+    .card {
+        background: var(--card-bg);
+        padding: 2.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.6s ease;
+        opacity: 0;
+        transform: translateY(40px);
+        will-change: transform, opacity;
+    }
+
+    .card.reveal {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card:hover {
+        border-color: var(--accent-color);
+        background: #0d0d0d;
+        transform: translateY(-10px) !important;
+    }
+
+    .card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
+
+    .status-badge {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border: 1px solid #333;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    /* CONTACT FORM */
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    input, textarea {
+        width: 100%;
+        padding: 1.2rem;
+        background: #050505;
+        border: 1px solid var(--border-color);
+        color: white;
+        border-radius: 8px;
+        outline: none;
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus { border-color: var(--accent-color); }
+
+    /* FOOTER */
+    footer {
+        padding: 5rem 10% 3rem;
+        border-top: 1px solid var(--border-color);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: start;
+    }
+
+    .footer-brand img { height: 40px; margin-bottom: 1rem; }
+    .footer-copy { color: var(--text-secondary); font-size: 0.85rem; }
+    
+    .footer-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent-color); }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
+        nav { padding: 1.2rem 5%; }
+        .nav-links { display: none; }
+        header { text-align: left; align-items: flex-start; padding: 0 8%; }
+        .cta-group { justify-content: flex-start; }
+        .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+        footer { grid-template-columns: 1fr; gap: 3rem; }
+        section { padding: 80px 8%; }
+    }
+
+    .vision-cta {
+        margin-top: 80px;
+        text-align: center;
+        padding-bottom: 60px;
+    }
+
+    .vision-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #ff7a18; /* Orange */
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .vision-btn:hover {
+        background: #ff9a3c;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(255, 122, 24, 0.4);
+    }
+</style>
+
+</head>
+<body style="overflow: hidden;"> 
+
+<div id="preloader">
+    <div class="intro-content">
+        <img src="logo.png" class="intro-logo-anim" alt="Riser Logo">
+        <div class="intro-line"></div>
+        <div class="intro-text-anim">RISER CORP</div>
+    </div>
+</div>
+
+<nav>
+    <a href="#" class="nav-logo-container">
+        <img src="logo.png" alt="Riser Logo" class="nav-logo"> <span class="logo">RISER CORP.</span>
+    </a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#projects">Work</a>
+        <a href="vision.html">Vision</a>
+        <a href="aboutfounder.html">Founder</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header id="home">
+    <img src="logo.png" alt="Riser Corporation" class="hero-logo"> 
+    <h1>Building the Future, <br>Step by Step.</h1>
+    <p class="hero-subtext">
+         Riser Corporation is an emerging startup dedicated to fitness, technology, and innovation, building with calm confidence toward a future-driven world.
+    </p>
+    <div class="cta-group">
+        <a href="#contact" class="btn btn-primary">Send Message</a>
+        <a href="#about" class="btn btn-secondary">Join the Journey</a>
+    </div>
+</header>
+
+<section id="about">
+    <span class="section-tag">About</span>
+    <h2>What is Riser Corporation?</h2>
+    <p class="content-text">
+        Founded by Soham Sardar as a future-focused engine for growth, Riser Corporation sits at the intersection of human movement and digital advancement. We are a startup in the making, focused on building meaningful products that empower people.
+    </p>
+    <p class="content-text">
+        Our vision is simple: Long-term growth over short-term hype. We believe in the power of learning through building and creating solutions that are both human and high-tech.
+    </p>
+    <p style="font-weight: 600;">The Riser Team</p>
+</section>
+
+<section id="focus">
+    <span class="section-tag">Focus Areas</span>
+    <h2>What We Do</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Fitness</h3>
+            <p>Digital fitness ideas and platforms designed to make wellness accessible, data-driven, and human-centric.</p>
+        </div>
+        <div class="card">
+            <h3>Technology</h3>
+            <p>Building clean software and web solutions that prioritize user experience and future-ready architecture.</p>
+        </div>
+        <div class="card">
+            <h3>Innovation</h3>
+            <p>A dedicated space for experimenting with new ideas and solving problems through a fresh lens.</p>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <span class="section-tag">Ongoing</span>
+    <h2>Work in Progress</h2>
+    <div class="grid">
+        <div class="card">
+            <span class="status-badge">COMING SOON</span>
+            <h3>Project Alpha</h3>
+            <p>Our core platform focused on integrating fitness tracking with intelligent feedback loops.</p>
+        </div>
+        <div class="card">
+            <span class="status-badge">ACTIVE BUILD</span>
+            <h3>Digital Ecosystem</h3>
+            <p>A suite of minimal tools designed for the modern innovator.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="contact-container">
+        <div>
+            <span class="section-tag">Get in touch</span>
+            <h2>Connect with us.</h2>
+            <p class="content-text">Open to learning, collaboration, and growth.</p>
+            <p style="margin-top: 2rem;">
+                <a href="mailto:risercorporation@gmail.com" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">risercorporation@gmail.com</a>
+            </p>
+        </div>
+        <form id="contactForm">
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<div class="vision-cta">
+    <a href="vision.html" class="vision-btn">
+        Click here to read our vision →
+    </a>
+</div>
+
+<section id="legal" style="padding: 60px 10%; background: #050505;">
+    <h2 style="font-size: 1.2rem;">Privacy & Terms</h2>
+    <p class="content-text" style="font-size: 0.9rem;">
+        This website is an early-stage startup project. We value your privacy: we do not collect sensitive personal data. If you contact us via email, your address will only be used to reply to your inquiry. By using this site, you acknowledge that Riser Corporation is a work in progress.
+    </p>
+</section>
+
+<footer>
+    <div class="footer-brand">
+        <img src="logo.png" alt="Riser Logo"> 
+        <div class="footer-copy">
+            <p>&copy; 2026 Riser Corporation</p>
+            <p>Step by Step.</p>
+        </div>
+    </div>
+    <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="vision.html">vision</a>
+        <a href="aboutfounder.html">about founder</a>
+        <a href="#projects">Work</a>
+        <a href="#contact">Contact</a>
+    </div>
+</footer>
+
+<script>
+    // Cinematic Intro Animation
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        
+        // Wait for animations (3.5 seconds)
+        setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+            document.body.style.overflow = 'visible'; // Scroll enable
+            
+            // Clean up from DOM
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 1200);
+        }, 3500);
+    });
+
+    // CUSTOM SMOOTH SCROLL (Interprets clicks on nav links)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Scroll reveal for cards with stagger effect
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add a small delay for each card to create a sequence
+                setTimeout(() => {
+                    entry.target.classList.add('reveal');
+                }, index * 100); 
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Contact form success popup
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Success! Your message has been sent to the Riser Team.');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

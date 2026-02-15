@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder | Riser Corporation</title>
+
+    <link rel="icon"  type="image/png" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        :root {
+            --orange: #ff6600;
+            --yellow: #ffcc00;
+            --blue: #00ccff;
+            --purple: #a020f0;
+            --bg-dark: radial-gradient(circle at center, #0a0a2a 0%, #050505 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-dark);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 1. MOVING NEWS BANNER (Patti) */
+        .news-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--orange);
+            color: #000;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 8px 0;
+            font-size: 12px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 2001;
+        }
+
+        .news-banner span {
+            display: inline-block;
+            animation: moveText 25s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 2. CLEAN WHITE HEADING SECTION */
+        .founder-header {
+            width: 100%;
+            padding: 80px 0 20px 0; /* Space for banner */
+            text-align: center;
+        }
+
+        .founder-header h2 {
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: #ffffff; /* Normal White */
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* 3. MAIN LAYOUT */
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            padding: 40px 20px;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        @media (max-width: 968px) {
+            .hero-section { grid-template-columns: 1fr; text-align: center; padding-top: 20px; }
+            .news-banner { font-size: 10px; }
+        }
+
+        /* 4. TEXT STYLING */
+        .content-left {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease forwards 0.5s;
+            text-align: left;
+        }
+        
+        @media (max-width: 968px) { .content-left { text-align: center; } }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .founder-name {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin: 10px 0;
+            letter-spacing: -1px;
+        }
+
+        .founder-role {
+            font-size: 1.2rem;
+            color: var(--orange);
+            font-weight: 600;
+            display: block;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        /* Keywords */
+        .curiosity { color: var(--orange); font-weight: 700; }
+        .skills { color: var(--yellow); font-weight: 700; }
+        .technology { color: var(--blue); font-weight: 700; }
+        .mindset { color: var(--purple); font-weight: 700; }
+
+        /* Glowing Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* 5. FOUNDER IDENTITY IMAGE */
+        .content-right {
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .identity-card {
+            width: 300px;
+            height: 400px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            animation: float 5s ease-in-out infinite;
+            transition: 0.5s;
+        }
+
+        .identity-card:hover {
+            transform: rotateY(10deg) scale(1.02);
+            border-color: var(--orange);
+        }
+
+        .identity-card img {
+            width: 160px;
+            border-radius: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.3));
+        }
+
+        .card-label {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--orange);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* BACKGROUND PARTICLES */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-banner">
+        <span>🔥 RISER CORPORATION FOUNDER • BUILDING THE FUTURE • INNOVATION • SKILLS OVER MARKS • 🔥</span>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="founder-header">
+        <h2>🚀 About Riser-Corporation Founder</h2>
+    </header>
+
+    <section class="hero-section">
+        <div class="content-left">
+            <span class="founder-role">Founder – Riser Corporation</span>
+            <h1 class="founder-name">Soham Sardar</h1>
+            <h2 class="age">16 years old</h2>
+
+            <p>
+                 I am Soham Sardar, a 15-year-old student and the founder of Riser Corporation.
+                 I believe that the future is not built by marks alone, but by curiosity,
+                skills, and the courage to think differently.
+            </p>
+
+            <p>
+                Today, students are often judged only by exams and grades.
+                At Riser Corporation, my vision is to change this mindset —
+                to help students explore technology, practical learning,
+                and new career possibilities beyond traditional paths.
+            </p>
+
+            <p>
+                Inspired by thinkers like Leonardo da Vinci, I believe learning should come
+                from observation, experimentation, and curiosity.
+                Riser Corporation exists to ignite that curiosity and help students
+                build confidence in their real abilities.
+            </p>
+
+            <p>
+                Building a bridge between education and evolution. By fostering 
+                <span class="curiosity">curiosity</span> and upgrading real-world 
+                <span class="skills">skills</span> through cutting-edge 
+                <span class="technology">technology</span>, we are shifting the 
+                global <span class="mindset">mindset</span>.
+            </p>
+
+            <div class="highlight-box">
+                From marks to mindset — building curious, skilled futures.
+            </div>
+        </div>
+
+        <div class="content-right">
+            <div class="identity-card">
+                <img src="images/soham-identity.png" alt="Founder Identity">
+                <div class="card-label">Official Identity</div>
+                <div style="font-size: 10px; opacity: 0.4; margin-top: 8px;">ID: RC-FOUNDER-2026</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 102, 0, 0.2)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => { initCanvas(); createParticles(); });
+        initCanvas();
+        createParticles();
+        animate();
+    </script>
+</body>
+</html>
